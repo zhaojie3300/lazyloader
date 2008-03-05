@@ -76,7 +76,7 @@ $(document).bind('ready',function(){
         });
 
 	$.loader().init('test_2',function(){
-           *alert("I don't know if there is an element with ID ='test2' or maxlength='true', but I just loaded the necessary files and 'function_testing_2' is ready for use");*
+           *alert("I don't know if there is an element with ID ='test2' or maxlength attribute, but I just loaded the necessary files and 'function_testing_2' is ready for use");*
         });
 });
 }}}
