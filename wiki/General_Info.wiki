@@ -1,0 +1,33 @@
+#summary General info about Lazy Loader, on-demand script and style loading
+
+= Introduction =
+The purpose of this plugin is to minimise initial loading times.
+
+It's very easy to use:
+*1) Define the scripts you normally use*
+{{{
+var load_elements = {
+    test : {
+       funcName : "testing",
+       attributes : {"id" : "test"},
+       source : { script: '<script type="text/javascript" src="test.js"></script>'}
+    }
+};
+}}}
+*** where, 'test' is the general name of your script
+           'funcName' is the main function of your script
+           'attributes' are the attributes of elements which your script acts upon
+           'source' is the source of all scripts and styles to be loaded as necessary
+*******************
+
+*2) Execute your functions*
+{{{
+i.   $.loader().init('testing',function(){alert('hello world');testing();});
+or
+ii.  $.loader().init($.loader().isNeeded("test"),function(){alert('hello world');testing();});
+}}}
+*******************
+
+That's pretty much it. Suggestions, contributions, and everything else are welcome.
+
+
