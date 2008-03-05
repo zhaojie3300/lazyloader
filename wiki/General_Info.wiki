@@ -33,7 +33,7 @@ ii.  $.loader().init($.loader().isNeeded("test"),function(){alert('hello world')
 
 That's pretty much it. Suggestions, contributions, and everything else are welcome.
 
-= Notes & Usage =
+= Notes =
   # *funcName* must be string
   # *attributes* must be object
   # *source* must be object
@@ -43,4 +43,36 @@ That's pretty much it. Suggestions, contributions, and everything else are welco
   # *$.loader().isNeeded(`var`)*: This function checks whether the `attributes` of the element you specified (`var`) are found in the DOM. If they exists, it will return the `funcName` for that element. Otherwise, returns false.
   # *$.loader().init(`function`,function(){ `.. callback ..` })*: This function makes sure that `function` is loaded before executing it. If the script including this function is not loaded, it will load it. After 5 (timed) attempts the script stops executing and throws an error (in console). Once the script is loaded and the function is ready for use, the `callback function` is executed.
 
-= Examples =
+= Example =
+Consider I specify my elements as:
+{{{
+var load_elements = {
+	test : {
+		funcName : "function_testing",
+		attributes : {"id" : "test"},
+		source : {
+			script: '<script type="text/javascript" src="test.js"></script>',
+			script_1: '<script type="text/javascript" src="test.js"></script>'
+		}
+	},
+	test_2 : {
+		funcName : "function_testing_2",
+		attributes : {"id" : "test2", "maxlength": true},
+		source : {
+			script: '<script type="text/javascript" src="test_2.js"></script>',
+			script2: '<script type="text/javascript" src="test_2_1.js"></script>',
+			css: '<link href="test_2.css" rel="stylesheet" media="screen" type="text/css" />'
+		}
+	}
+};
+
+}}}
+
+I check whether or not the scripts and styles are needed by using:
+{{{
+$(document).bind('ready',function(){
+	$.loader().init($.loader().isNeeded("test"),function(){alert("There is an element with ID = 'test'. Function 'function_test' is ready to be used");});
+
+	$.loader().init('test_2',function(){alert("I don't know if there is an element with ID ='test2' or maxlength='true', but I just loaded the necessary files and 'function_testing_2' is ready for use");});
+});
+}}}
