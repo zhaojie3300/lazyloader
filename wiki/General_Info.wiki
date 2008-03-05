@@ -32,3 +32,15 @@ ii.  $.loader().init($.loader().isNeeded("test"),function(){alert('hello world')
 
 
 That's pretty much it. Suggestions, contributions, and everything else are welcome.
+
+= Notes & Usage =
+  # *funcName* must be string
+  # *attributes* must be object
+  # *source* must be object
+  # *load_elements* is the object containing all necessary info for loading scripts.
+---
+  # *$.loader(`load_elements`)*: This function checks for DOM elements that have the attributes you specified. Upon finding such elements, the function loads the scripts and styles specified. *Best used after the DOM has finished loading (e.g. $(document).bind("ready",function(){` .. here .. `}))*
+  # *$.loader().isNeeded(`var`)*: This function checks whether the `attributes` of the element you specified (`var`) are found in the DOM. If they exists, it will return the `funcName` for that element. Otherwise, returns false.
+  # *$.loader().init(`function`,function(){ `.. callback ..` })*: This function makes sure that `function` is loaded before executing it. If the script including this function is not loaded, it will load it. After 5 (timed) attempts the script stops executing and throws an error (in console). Once the script is loaded and the function is ready for use, the `callback function` is executed.
+
+= Examples =
