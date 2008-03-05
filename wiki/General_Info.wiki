@@ -14,20 +14,21 @@ var load_elements = {
     }
 };
 }}}
-*** where, 'test' is the general name of your script
-           'funcName' is the main function of your script
-           'attributes' are the attributes of elements which your script acts upon
-           'source' is the source of all scripts and styles to be loaded as necessary
-*******************
+*** where,
+* 'test' is the general name of your script
+* 'funcName' is the main function of your script
+* 'attributes' are the attributes of elements which your script acts upon
+* 'source' is the source of all scripts and styles to be loaded as necessary
+
 
 *2) Execute your functions*
 {{{
 i.   $.loader().init('testing',function(){alert('hello world');testing();});
+}}}
 or
+{{{
 ii.  $.loader().init($.loader().isNeeded("test"),function(){alert('hello world');testing();});
 }}}
-*******************
+
 
 That's pretty much it. Suggestions, contributions, and everything else are welcome.
-
-
