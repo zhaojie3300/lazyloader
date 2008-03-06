@@ -80,3 +80,7 @@ $(document).bind('ready',function(){
         });
 });
 }}}
+
+
+= Download Lazy Loader =
+http://code.google.com/p/lazyloader/downloads/detail?name=jquery.loader.js
